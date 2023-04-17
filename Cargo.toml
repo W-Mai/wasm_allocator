@@ -1,0 +1,16 @@
+[package]
+name = "wasm_allocator"
+version = "0.1.0"
+authors = ["W-Mai <1341398182@qq.com>"]
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+
+[dependencies]
+
+[profile.release]
+# Tell `rustc` to optimize for small code size.
+opt-level = "s"
