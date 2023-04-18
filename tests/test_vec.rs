@@ -9,6 +9,7 @@ mod tests {
     #[global_allocator]
     static ALLOCATOR: Heap = Heap;
 
+    #[test]
     fn test_vec() {
         let mut v = Vec::new();
         for i in 0..100 {

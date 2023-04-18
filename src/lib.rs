@@ -1,18 +1,19 @@
 #![no_std]
 #![no_main]
 #![feature(alloc_error_handler, core_intrinsics, const_cmp)]
+#![feature(const_mut_refs)]
 
 mod utils;
 
-use core::arch::wasm32;
+// use core::arch::wasm32;
 use core::alloc::{GlobalAlloc, Layout};
 use core::cmp::{max, min};
-use core::mem::size_of;
 
-
-const HEAP_SIZE: usize = 1024 * 1024; // 1 MB
+const HEAP_SIZE: usize = 8 * 1024 * 1024; // 1 MB
 
 static mut HEAP: [u8; HEAP_SIZE] = [0; HEAP_SIZE];
+
+static mut HEAP_TOP: usize = 0;
 
 pub struct Heap;
 
@@ -21,6 +22,11 @@ unsafe impl GlobalAlloc for Heap {
         let size = layout.size();
         let align = layout.align();
 
+        if HEAP_TOP < HEAP_SIZE {
+            let ptr = HEAP.as_mut_ptr().add(HEAP_TOP);
+            HEAP_TOP += size;
+            return ptr;
+        }
         core::ptr::null_mut()
     }
 
