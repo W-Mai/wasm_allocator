@@ -4,13 +4,13 @@ version = "0.1.0"
 authors = ["W-Mai <1341398182@qq.com>"]
 edition = "2021"
 
-[lib]
-crate-type = ["cdylib", "rlib"]
-
 [features]
 
 [dependencies]
 
+[profile.dev]
+panic = "abort" # 禁用panic时栈展开
+
 [profile.release]
-# Tell `rustc` to optimize for small code size.
+panic = "abort" # 禁用panic时栈展开
 opt-level = "s"

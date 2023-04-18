@@ -4,6 +4,7 @@
 
 mod utils;
 
+use core::arch::wasm32;
 use core::alloc::{GlobalAlloc, Layout};
 use core::cmp::{max, min};
 use core::mem::size_of;
@@ -19,7 +20,6 @@ unsafe impl GlobalAlloc for Heap {
     unsafe fn alloc(&self, layout: Layout) -> *mut u8 {
         let size = layout.size();
         let align = layout.align();
-
 
         core::ptr::null_mut()
     }
