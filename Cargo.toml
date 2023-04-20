@@ -4,6 +4,10 @@ version = "0.1.1"
 authors = ["W-Mai <1341398182@qq.com>"]
 edition = "2021"
 build = "build.rs"
+categories = ["wasm", "no-std", "allocator", "memory-management"]
+description = "A tiny wasm allocator for no_std"
+license = "MIT"
+repository = "https://github.com/W-Mai/wasm_allocator"
 
 [features]
 
