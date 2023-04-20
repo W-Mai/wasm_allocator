@@ -1,8 +1,9 @@
 [package]
 name = "wasm_allocator"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["W-Mai <1341398182@qq.com>"]
 edition = "2021"
+build = "build.rs"
 
 [features]
 
